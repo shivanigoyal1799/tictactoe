@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Board from './components/Board';
+import History from './components/History';
 import { calculateWinner } from './components/helper';
 import './styles/root.scss';
 
@@ -12,7 +13,7 @@ const App = () => {
   ]);
   const [currMove, setCurrMove] = useState(0);
   const current = history[currMove];
-  // console.log('history', history);
+  console.log('history', history);
 
   const winner = calculateWinner(current.board);
   const message = winner
@@ -33,6 +34,9 @@ const App = () => {
     setCurrMove(prev => prev + 1);
   };
 
+  const moveTo = move => {
+    setCurrMove(move);
+  };
   return (
     <div className="app">
       <h1>TIC TAC TOE</h1>
@@ -41,6 +45,7 @@ const App = () => {
         initialBoardState={current.board}
         handleSquareClick={handleSquareClick}
       />
+      <History history={history} moveTo={moveTo} currMove={currMove} />
     </div>
   );
 };
