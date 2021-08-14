@@ -2,16 +2,14 @@ import React from 'react';
 import Square from './Square';
 
 const Board = ({ initialBoardState, handleSquareClick }) => {
-  const renderSquare = position => {
-    return (
-      <Square
-        value={initialBoardState[position]}
-        onClickFunc={() => {
-          handleSquareClick(position);
-        }}
-      />
-    );
-  };
+  const renderSquare = position => (
+    <Square
+      value={initialBoardState[position]}
+      onClickFunc={() => {
+        handleSquareClick(position);
+      }}
+    />
+  );
 
   return (
     <div className="board">

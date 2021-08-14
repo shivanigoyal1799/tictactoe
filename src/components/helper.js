@@ -1,5 +1,5 @@
 export function calculateWinner(squares) {
-  //squares means initial board
+  // squares means initial board
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
