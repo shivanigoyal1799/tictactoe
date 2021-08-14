@@ -1,7 +1,14 @@
 import React from 'react';
 
-const Square = ({ value, onClickFunc }) => (
-  <button type="button" className="square" onClick={onClickFunc}>
+const Square = ({ value, onClickFunc, isWinningSquare }) => (
+  <button
+    type="button"
+    className="square"
+    onClick={onClickFunc}
+    style={{
+      fontWeight: isWinningSquare ? 'bold' : 'normal',
+    }}
+  >
     {value}
   </button>
 );

@@ -1,7 +1,8 @@
 import React from 'react';
 
 const StatusMessage = ({ winner, current }) => {
-  const noMoveLeft = current.board.every(elem => elem != null);
+  const noMoveLeft = current.board.every(elem => elem !== null);
+
   return (
     <h2>
       {/* conditional rendering */}

@@ -15,7 +15,7 @@ const App = () => {
   const [currMove, setCurrMove] = useState(0);
   const current = history[currMove];
 
-  const winner = calculateWinner(current.board);
+  const { winner, winningSquares } = calculateWinner(current.board);
 
   const handleSquareClick = position => {
     if (current.board[position] || winner) return;
@@ -35,14 +35,27 @@ const App = () => {
   const moveTo = move => {
     setCurrMove(move);
   };
+  const startNewGame = () => {
+    setHistory([
+      {
+        board: Array(9).fill(null),
+        isXNext: true,
+      },
+    ]);
+    setCurrMove(0);
+  };
   return (
     <div className="app">
       <h1>TIC TAC TOE</h1>
       <StatusMessage winner={winner} current={current} />
       <Board
-        initialBoardState={current.board}
+        board={current.board}
         handleSquareClick={handleSquareClick}
+        winningSquares={winningSquares}
       />
+      <button type="button" onClick={startNewGame}>
+        Start New Game🎮
+      </button>
       <History history={history} moveTo={moveTo} currMove={currMove} />
     </div>
   );
